@@ -1,10 +1,15 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 app.get("/", async (req, res) => {
   res.status(200).send("Xin chào bạn");
 });
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
